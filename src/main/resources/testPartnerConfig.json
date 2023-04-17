@@ -1,0 +1,35 @@
+{
+  "connectorType": "HTTP",
+  "connectionProperties": {
+    "serverAddress": "localhost",
+    "serverPort": 3000,
+    "isSSL": false,
+    "numberOfMaximumConnections": 10
+  },
+  "apiProperties": {
+    "urlPath": "/path",
+    "queryParameters": [
+      {
+        "value": "test",
+        "name": "clientId"
+      }
+    ],
+    "headers": [
+      {
+        "value": "test",
+        "name": "clientId"
+      }
+    ],
+    "httpMethod": "POST",
+    "payloadType": "single",
+    "operationalProperties": {
+      "retryCount": 2,
+      "maxNumberOfRequestsPerMin": 10,
+      "payloadSizeLimit": 100
+    },
+    "timeoutProperties": {
+      "readTimeout": 100,
+      "connectionTimeout": 100
+    }
+  }
+}

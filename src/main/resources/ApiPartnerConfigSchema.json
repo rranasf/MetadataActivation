@@ -1,0 +1,141 @@
+{
+  "$schema": "http://json-schema.org/draft/2019-09/schema#",
+  "type": "object",
+  "properties": {
+    "connectorType": {
+      "enum": [
+        "HTTP",
+        "HTTPS"
+      ]
+    },
+    "connectionProperties": {
+      "type": "object",
+      "properties": {
+        "serverAddress": {
+          "type": "string"
+        },
+        "serverPort": {
+          "type": "integer"
+        },
+        "isSSL": {
+          "type": "boolean"
+        },
+        "numberOfMaximumConnections": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "serverAddress",
+        "serverPort",
+        "isSSL",
+        "numberOfMaximumConnections"
+      ]
+    },
+    "apiProperties": {
+      "type": "object",
+      "properties": {
+        "urlPath": {
+          "type": "string"
+        },
+        "queryParameters": {
+          "type": "array",
+          "items": [
+            {
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": "string"
+                },
+                "name": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "value",
+                "name"
+              ]
+            }
+          ]
+        },
+        "headers": {
+          "type": "array",
+          "items": [
+            {
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": "string"
+                },
+                "name": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "value",
+                "name"
+              ]
+            }
+          ]
+        },
+        "httpMethod": {
+          "type": "string",
+          "enum": [
+            "PUT",
+            "POST"
+          ]
+        },
+        "payloadType": {
+          "type": "string"
+        },
+        "operationalProperties": {
+          "type": "object",
+          "properties": {
+            "retryCount": {
+              "type": "integer"
+            },
+            "maxNumberOfRequestsPerMin": {
+              "type": "integer"
+            },
+            "payloadSizeLimit": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "retryCount",
+            "maxNumberOfRequestsPerMin",
+            "payloadSizeLimit"
+          ]
+        },
+        "timeoutProperties": {
+          "type": "object",
+          "properties": {
+            "readTimeout": {
+              "type": "integer"
+            },
+            "connectionTimeout": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "readTimeout",
+            "connectionTimeout"
+          ]
+        }
+      },
+      "required": [
+        "urlPath",
+        "queryParameters",
+        "headers",
+        "httpMethod",
+        "payloadType",
+        "operationalProperties",
+        "timeoutProperties"
+      ]
+    }
+  },
+  "required": [
+    "connectorType",
+    "connectionProperties",
+    "apiProperties"
+  ]
+}

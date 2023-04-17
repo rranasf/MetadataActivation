@@ -2,6 +2,7 @@ package org.example;
 
 
 import com.opencsv.*;
+import org.jetbrains.annotations.NotNull;
 import org.json.*;
 import java.io.File;
 import java.io.FileReader;
@@ -27,7 +28,7 @@ public class CsvToJsonParser {
 
     }
 
-    private static void deepenJsonWithDotNotation(JSONObject jsonObject, String key, String value) {
+    public static void deepenJsonWithDotNotation(JSONObject jsonObject, @NotNull String key, String value) {
         if (key.contains(".")) {
             String innerKey = key.substring(0, key.indexOf("."));
             String remaining = key.substring(key.indexOf(".") + 1);
@@ -70,7 +71,7 @@ public class CsvToJsonParser {
     }
 
 
-    public List<String> readHeaders(String filePath) {
+    public static List<String> readHeaders(String filePath) {
         List<String> res = new ArrayList<>();
         try {
             File file = new File(filePath);
