@@ -1,10 +1,10 @@
 {
   "connectorType": "HTTP",
   "connectionProperties": {
-    "serverAddress": "localhost",
+    "serverAddress": "34.30.80.128",
     "serverPort": 3000,
     "isSSL": false,
-    "numberOfMaximumConnections": 10
+    "numberOfMaximumConnections": 500
   },
   "apiProperties": {
     "urlPath": "/path",
@@ -25,7 +25,7 @@
     "operationalProperties": {
       "retryCount": 2,
       "maxNumberOfRequestsPerMin": 10,
-      "payloadSizeLimit": 100
+      "payloadSizeLimit": 100000
     },
     "timeoutProperties": {
       "readTimeout": 100,

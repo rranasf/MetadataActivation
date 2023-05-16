@@ -18,18 +18,17 @@ import org.json.simple.parser.JSONParser;
 
 
 public class PartnerConfigReader {
-
     private static InputStream inputStreamFromClasspath( String path ) {
 
         // returning stream
         return Thread.currentThread().getContextClassLoader().getResourceAsStream( path );
     }
 
-    public PartnerConfig loadJson() {
+    public PartnerConfig loadPartnerConfig(String filePath) {
         PartnerConfig partnerConfig = null;
         try {
             JSONParser jsonParser = new JSONParser();
-            InputStream inputStream = inputStreamFromClasspath("testPartnerConfig.json");
+            InputStream inputStream = inputStreamFromClasspath(filePath);
 
             JSONObject jsonObject = (JSONObject) jsonParser.parse(
                     new InputStreamReader(inputStream, "UTF-8"));
@@ -44,7 +43,7 @@ public class PartnerConfigReader {
         return partnerConfig;
     }
 
-    public boolean validateJsonAgainstSchema() throws Exception {
+    public boolean validateConfigAgainstSchema() throws Exception {
 
         // create instance of the ObjectMapper class
         ObjectMapper objectMapper = new ObjectMapper();
@@ -89,7 +88,8 @@ public class PartnerConfigReader {
     public static void main(String[] args) throws Exception {
         PartnerConfigReader reader = new PartnerConfigReader();
 //        reader.validateJsonAgainstSchema();
-        reader.loadJson();
+        reader.loadPartnerConfig("testPartnerConfig.json");
     }
+
 
 }
